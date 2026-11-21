@@ -64,4 +64,21 @@ dependencies {
     // Corrutinas para trabajo asincrónico
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
 
+    // Kotest[cite: 14]
+    testImplementation("io.kotest:kotest-runner-junit5:5.8.0")
+    testImplementation("io.kotest:kotest-assertions-core:5.8.0")
+
+    // JUnit 5[cite: 14]
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+
+    // MockK[cite: 14]
+    testImplementation("io.mockk:mockk:1.13.10")
+
+    // Coroutines Test
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+}
+
+// Obligatorio para usar JUnit 5[cite: 15]
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }

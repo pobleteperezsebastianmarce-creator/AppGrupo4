@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class PostViewModel : ViewModel() {
+open class PostViewModel : ViewModel() {
     private val repository = PostRepository()
 
-    private val _postList = MutableStateFlow<List<Post>>(emptyList())
-    val postList: StateFlow<List<Post>> = _postList
+    protected val _postList = MutableStateFlow<List<Post>>(emptyList())
+    open val postList: StateFlow<List<Post>> = _postList
 
     private val _mensajeEstado = MutableStateFlow("")
     val mensajeEstado: StateFlow<String> = _mensajeEstado
@@ -21,7 +21,7 @@ class PostViewModel : ViewModel() {
         fetchPosts()
     }
 
-    fun fetchPosts() {
+    open fun fetchPosts() {
         viewModelScope.launch {
             try {
                 _postList.value = repository.getPosts()
